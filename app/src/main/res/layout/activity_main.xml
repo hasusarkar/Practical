@@ -17,16 +17,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="@id/actLoginguideline"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/actMainRecylerList"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refreshPull"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
-        android:paddingBottom="@dimen/dp_56"
         android:layout_marginTop="@dimen/dp_10"
         app:layout_constraintTop_toBottomOf="@id/actMainTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/actLoginguideline"/>
+        app:layout_constraintEnd_toEndOf="@id/actLoginguideline2"
+        app:layout_constraintStart_toStartOf="@id/actLoginguideline">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/actMainRecylerList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_56"
+            android:layout_marginTop="@dimen/dp_10"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/actLoginguideline"

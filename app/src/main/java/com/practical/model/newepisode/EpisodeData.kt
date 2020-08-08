@@ -8,7 +8,6 @@ import com.google.gson.annotations.SerializedName
 
 
 class EpisodeData {
-
     @SerializedName("data")
     @Expose
     val data: Data? = null

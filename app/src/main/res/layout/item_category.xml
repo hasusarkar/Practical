@@ -9,7 +9,7 @@
         android:id="@+id/itemCategory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text=""
+        android:padding="@dimen/dp_5"
         android:theme="@style/health_fitn"
         android:gravity="center"
         android:background="@drawable/gredient"
