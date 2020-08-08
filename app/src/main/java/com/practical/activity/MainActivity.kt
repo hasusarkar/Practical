@@ -2,7 +2,9 @@ package com.practical.activity
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.practical.BaseActivity
@@ -19,6 +21,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
+
 class MainActivity : BaseActivity() {
     val allDataObserver = mutableListOf<AllData>()
     var awaitVal = false
@@ -34,6 +37,10 @@ class MainActivity : BaseActivity() {
         allThreeList= mutableListOf()
         val linearLayoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         actMainRecylerList.layoutManager = linearLayoutManager
+
+        val divider = DividerItemDecoration(actMainRecylerList.context, DividerItemDecoration.VERTICAL)
+        divider.setDrawable(ContextCompat.getDrawable(baseContext, R.drawable.line_divider)!!)
+        actMainRecylerList.addItemDecoration(divider)
 
         allAdapter = AllAdapter(this, allThreeList)
         actMainRecylerList.adapter = allAdapter
@@ -95,40 +102,6 @@ class MainActivity : BaseActivity() {
 
     private fun callDispaly(allThreeList: MutableList<AllData>) {
         allAdapter.updateData(allThreeList)
-        /*for (y in 0 until allThreeList.size) {
-            val layoutInflate = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val viewX:View = layoutInflate.inflate(R.layout.recylerview_layout, null)
-
-            val recylertitle = viewX.findViewById(R.id.recylertitle) as TextView
-            recylerEmptytext = viewX.findViewById(R.id.recylerEmptytext) as TextView
-            mainRecyler.setBackgroundResource(R.drawable.bg_explore_yellow)
-
-
-            val me = allThreeList[y]
-            if (me is List<*>) {
-                val arr = me as List<Medium>
-                val arr1 = me as List<Channel>
-                val arr2 = me as List<Category>
-
-                if (arr.size > 0) {
-
-                    exploreRecylerAdapter = ExploreRecylerAdapter(activity, arr, recylerviewItemtype, object :
-                            onExploreItemListener {
-                            override fun onClickTourItem(tour: ExploreTour) {
-                                exptourObj = tour
-                                objflag = "explore"
-                                callFragment("detail", "explore")
-                            }
-                        }, object : onAddWishListener {
-                            override fun onSuccessData(tourId: String, flag: Boolean) {
-                                callAddRemoveWish(tourId, flag)
-                                tourIdUnCheck = flag
-                            }
-                        })
-                    recylerviewItemtype.adapter = exploreRecylerAdapter
-                }
-            }
-        }*/
     }
 
 }

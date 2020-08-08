@@ -2,4 +2,6 @@
     <string name="app_name">Practical</string>
     <string name="channel">Channels</string>
     <string name="new_episode">New Episodes</string>
+    <string name="episodes">episodes</string>
+    <string name="browse_by_c">Browse by categories</string>
 </resources>

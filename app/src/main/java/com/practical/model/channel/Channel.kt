@@ -30,7 +30,7 @@ class Channel {
 
     @SerializedName("iconAsset")
     @Expose
-    val iconAsset: Any? = null
+    val iconAsset: IconAsset? = null
 
     @SerializedName("coverAsset")
     @Expose
@@ -39,5 +39,7 @@ class Channel {
     @SerializedName("slug")
     @Expose
     val slug: String? = null
+
+    var type:Int=0
 
 }

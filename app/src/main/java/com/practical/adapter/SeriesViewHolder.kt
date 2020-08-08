@@ -1,46 +1,36 @@
 package com.practical.adapter
 
 import android.view.View
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.practical.R
+import com.practical.adapter.seriesadapter.SeriesAdapter
 import com.practical.model.AllData
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.episode_item.view.*
+import kotlinx.android.synthetic.main.series_item.view.*
+
 
 class SeriesViewHolder  (itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun bind(allData: AllData, screenWidth: Int) {
+    fun bind(allData: AllData) {
+        val channelList=allData.channelList
 
+        val linearLayoutManager = LinearLayoutManager(itemView.context, RecyclerView.VERTICAL, false)
+        itemView.itemChannelRecylerList.layoutManager = linearLayoutManager
 
-        val itemWidth = screenWidth / 1.3
-
-//        val lp = itemExplorerMainLayout.layoutParams
-//        lp.height = lp.height
-//        lp.width = itemWidth.toInt()
-//        itemExplorerMainLayout.layoutParams = lp
-//
-//        val name=item.authorFirstname+" "+item.authorLastname
-//        itemTourUserName.text = name
-//
-//
-//        if (item.authorProfileImage != null) {
-//            if (item.authorProfileImage.isNotEmpty()) {
-//                val image = item.authorProfileImage
-//                val options = RequestOptions()
-//                    .placeholder(R.drawable.ic_noimage)
-//                    .error(R.drawable.ic_noimage)
-//
-//                Glide.with(itemView.context)
-//                    .asBitmap()
-//                    .load(image)
-//                    .apply(options)
-//                    .into(object : BitmapImageViewTarget(itemTourProfileImg) {
-//                        override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
-//                            super.onResourceReady(resource, transition)
-//                            itemTourProfileImg.setImageBitmap(resource)//This is important
-//                        }
-//                    })
+//        for(i in 0 until channelList.size){
+//            if(channelList[i].series?.size==0){
+//                channelList[i].type=1
+//            }else{
+//                channelList[i].type=2
 //            }
 //        }
+        val seriesAdapter = SeriesAdapter(itemView.context, channelList)
+        val divider = DividerItemDecoration(itemView.itemChannelRecylerList.context, DividerItemDecoration.VERTICAL)
+        divider.setDrawable(ContextCompat.getDrawable(itemView.context, R.drawable.line_divider)!!)
+        itemView.itemChannelRecylerList.addItemDecoration(divider)
+        itemView.itemChannelRecylerList.adapter = seriesAdapter
     }
 }
